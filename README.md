@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Build a FullStack App with Next.js, Supabase & Prisma | The Modern Dev by
+[AlterClass.io](https://alterclass.io).
+
+- Learn to build this application step-by-step by following the FREE course on
+  [The Modern Dev](https://themodern.dev/).
+
+- Preview the app live [here](https://supa-vacation.vercel.app/).
+
+- Deploy the same app using Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/AlterClassIO/supa-vacation&project-name=SupaVacation+by+The+Modern+Dev&repository-name=SupaVacation+by+The+Modern+Dev)
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository and install dependencies
 
-```bash
-npm run dev
-# or
-yarn dev
+```
+git clone https://github.com/AlterClassIO/supa-vacation
+cd supa-vacation
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure your local environment
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Rename the `.env.local.example` file in this directory to `.env.local` (which
+will be ignored by Git):
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+cp .env.local.example .env.local
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Add your own values for all the environment variables.
 
-## Learn More
+### 3. Start the application
 
-To learn more about Next.js, take a look at the following resources:
+To run your site locally, use:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To run it in production mode, use:
 
-## Deploy on Vercel
+```
+npm run build
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT](https://github.com/AlterClassIO/supa-vacation/blob/master/LICENSE)
