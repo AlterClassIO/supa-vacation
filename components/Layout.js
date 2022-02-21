@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { useSession, signOut } from 'next-auth/react';
 import AuthModal from './AuthModal';
 import { Menu, Transition } from '@headlessui/react';
 import {
@@ -20,7 +21,7 @@ const menuItems = [
   {
     label: 'List a new home',
     icon: PlusIcon,
-    href: '/list',
+    href: '/create',
   },
   {
     label: 'My homes',
@@ -35,17 +36,18 @@ const menuItems = [
   {
     label: 'Logout',
     icon: LogoutIcon,
-    onClick: () => null,
+    onClick: signOut,
   },
 ];
 
 const Layout = ({ children = null }) => {
   const router = useRouter();
 
-  const [showModal, setShowModal] = useState(false);
+  const { data: session, status } = useSession();
+  const user = session?.user;
+  const isLoadingUser = status === 'loading';
 
-  const user = null;
-  const isLoadingUser = false;
+  const [showModal, setShowModal] = useState(false);
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
@@ -76,7 +78,7 @@ const Layout = ({ children = null }) => {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => {
-                    user ? router.push('/list') : openModal();
+                    session?.user ? router.push('/create') : openModal();
                   }}
                   className="hidden sm:block hover:bg-gray-200 transition px-3 py-1 rounded-md"
                 >
