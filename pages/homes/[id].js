@@ -91,7 +91,7 @@ const ListedHome = (home = null) => {
           ) : null}
         </div>
 
-        <div className="mt-6 relative aspect-video bg-gray-200 rounded-lg shadow-md overflow-hidden">
+        <div className="mt-6 relative aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg shadow-md overflow-hidden">
           {home?.image ? (
             <Image
               src={home.image}
