@@ -16,16 +16,18 @@ const Card = ({
 }) => (
   <Link href={`/homes/${id}`}>
     <a className="block w-full">
-      <div className="relative bg-gray-200 rounded-lg shadow overflow-hidden aspect-video">
-        {image ? (
-          <Image
-            src={image}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-            className="hover:opacity-80 transition"
-          />
-        ) : null}
+      <div className="relative">
+        <div className="bg-gray-200 rounded-lg shadow overflow-hidden aspect-w-16 aspect-h-9">
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+              className="hover:opacity-80 transition"
+            />
+          ) : null}
+        </div>
         <button
           type="button"
           onClick={e => {
@@ -43,19 +45,10 @@ const Card = ({
           />
         </button>
       </div>
-      <div className="mt-2 w-full inline-flex justify-between space-x-4">
-        <span className="truncate text-gray-700 font-semibold">
-          {title ?? ''}
-        </span>
-        <span className="shrink-0">
-          {new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(price ?? 0)}{' '}
-          <span className="text-gray-500">/night</span>
-        </span>
+      <div className="mt-2 w-full text-gray-700 font-semibold leading-tight">
+        {title ?? ''}
       </div>
-      <ol className="inline-flex items-center space-x-1 text-gray-500">
+      <ol className="mt-1 inline-flex items-center space-x-1 text-gray-500">
         <li>
           <span>{guests ?? 0} guests</span>
           <span aria-hidden="true"> · </span>
@@ -68,6 +61,13 @@ const Card = ({
           <span>{baths ?? 0} baths</span>
         </li>
       </ol>
+      <p className="mt-2">
+        {new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        }).format(price ?? 0)}{' '}
+        <span className="text-gray-500">/night</span>
+      </p>
     </a>
   </Link>
 );
