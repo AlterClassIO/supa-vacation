@@ -67,7 +67,7 @@ const ImageUpload = ({
         disabled={updatingPicture}
         onClick={handleOnClickPicture}
         className={classNames(
-          'relative aspect-video overflow-hidden rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition group focus:outline-none',
+          'relative aspect-w-16 aspect-h-9 overflow-hidden rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition group focus:outline-none',
           image?.src
             ? 'hover:opacity-50 disabled:hover:opacity-100'
             : 'border-2 border-dashed hover:border-gray-400 focus:border-gray-400 disabled:hover:border-gray-200'
