@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/react';
 import { Fragment, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -68,11 +69,36 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
   const [showSignIn, setShowSignIn] = useState(false);
 
   const signInWithEmail = async ({ email }) => {
-    // TODO: Perform email auth
+    let toastId;
+    try {
+      toastId = toast.loading('Loading...');
+      setDisabled(true);
+      // Perform sign in
+      const { error } = await signIn('email', {
+        redirect: false,
+        callbackUrl: window.location.href,
+        email,
+      });
+      // Something went wrong
+      if (error) {
+        throw new Error(error);
+      }
+      setConfirm(true);
+      toast.dismiss(toastId);
+    } catch (err) {
+      toast.error('Unable to sign in', { id: toastId });
+    } finally {
+      setDisabled(false);
+    }
   };
 
   const signInWithGoogle = () => {
-    // TODO: Perform Google auth
+    toast.loading('Redirecting...');
+    setDisabled(true);
+    // Perform sign in
+    signIn('google', {
+      callbackUrl: window.location.href,
+    });
   };
 
   const closeModal = () => {
